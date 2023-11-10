@@ -130,7 +130,7 @@ const getVietNamasDefault = async () => {
 const getCountryHoliday = async (searchInput, yearInput, monthInput, dayInput, countrycodeInput, languageInput) => {
     let response;
     try {
-        if (searchInput) response = await fetch(`${BASE_URL}holiddays?pretty&key=${API_KEY}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}&search=${inputBox[0].value}`);
+        if (searchInput) response = await fetch(`${BASE_URL}holidays?pretty&key=${API_KEY}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}&search=${inputBox[0].value}`);
         else response = await fetch(`${BASE_URL}holidays?pretty&key=${API_KEY}&${countrycodeInput ? `&country=${inputBox[4].value}` : "country=VN"}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}${monthInput ? `&month=${inputBox[2].value}` : ""}${dayInput ? `&day=${inputBox[3].value}` : ""}${languageInput ? `&language=${inputBox[5].value}` : ""}`);
         
         if (response.ok) {
