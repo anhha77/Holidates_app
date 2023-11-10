@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/holidates_app.css">
+</head>
+<body>
+    <header>
+        <div class="header-project">
+            <h1 class="heading-text">
+                HoliDates
+            </h1>
+            <p class="heading-text">
+                "To travel is to love"
+            </p>
+        </div>
+    </header>
+    <main>
+        <div class="project-content">
+            <div class="col col-one">
+                <div class="card-wrapper">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="title-card-contain">
+                            <h3 class="title-card">Query Options</h3>
+                        </div>
+                        <div class="input-contain">
+                            <input type="text" class="input-box" id="search-query" placeholder="Search">
+                            <input type="text" class="input-box" id="year-query" placeholder="2022">
+                            <input type="text" class="input-box" id="month-query" placeholder="Month">
+                            <input type="text" class="input-box" id="day-query" placeholder="Day">
+                            <input type="text" class="input-box" id="country-query" placeholder="VN">
+                            <input type="text" class="input-box" id="language-query" placeholder="Language">
+                            <button id="render-holiday" class="btn-render">Render Holiday</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-wrapper">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="title-card-contain">
+                            <h3 class="title-card holiday-card">Holidays of a Country</h3>
+                        </div>
+                        <div class="query-contain">
+                            <ul>
+                                <li>
+                                    <div class="number">1</div>
+                                    <div class="result-contain">
+                                        <div class="title">Holiday Name 1</div>
+                                        <div class="result">Wednesday - 2020-01-01</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">2</div>
+                                    <div class="result-contain">
+                                        <div class="title">Holiday Name 2</div>
+                                        <div class="result">Thursday - 2020-01-02</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="error-contain">
+                            <p class="error-message"></p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-two">
+                <div class="card-wrapper">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="title-card-contain">
+                            <h3 class="title-card">Country List</h3>
+                        </div>
+                        <div class="btn-contain">
+                            <button id="render-country-list" class="btn-render">Render Countries List</button>
+                        </div>
+                        
+                        <div class="query-contain">
+                            <ul>
+                                <li>
+                                    <div class="number">1</div>
+                                    <div class="result-contain">
+                                        <div class="title">Country Name 1</div>
+                                        <div class="result">Code: CN1</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">2</div>
+                                    <div class="result-contain">
+                                        <div class="title">Country Name 2</div>
+                                        <div class="result">Code: CN2</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">3</div>
+                                    <div class="result-contain">
+                                        <div class="title">Country Name 3</div>
+                                        <div class="result">Code: CN3</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">4</div>
+                                    <div class="result-contain">
+                                        <div class="title">Country Name 4</div>
+                                        <div class="result">Code: CN4</div>
+                                    </div>                                                                              
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="error-contain">
+                            <p class="error-message"></p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="card-wrapper">
+                    <div class="card-border"></div>
+                    <div class="card-content">
+                        <div class="title-card-contain">
+                            <h3 class="title-card">Language List</h3>
+                        </div>
+                        <div class="btn-contain">
+                            <button id="render-language-list" class="btn-render">Render Languages List</button>
+                        </div>
+                        
+                        <div class="query-contain">
+                            <ul>
+                                <li>
+                                    <div class="number">1</div>
+                                    <div class="result-contain">
+                                        <div class="title">Language Name 1</div>
+                                        <div class="result">Code: LN1</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">2</div>
+                                    <div class="result-contain">
+                                        <div class="title">Language Name 2</div>
+                                        <div class="result">Code: LN2</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">3</div>
+                                    <div class="result-contain">
+                                        <div class="title">Language Name 3</div>
+                                        <div class="result">Code: LN3</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="number">4</div>
+                                    <div class="result-contain">
+                                        <div class="title">Language Name 4</div>
+                                        <div class="result">Code: LN4</div>
+                                    </div>                                                                              
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="error-contain">
+                            <p class="error-message"></p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/holidates_app.js"></script>
+</body>
+</html>
