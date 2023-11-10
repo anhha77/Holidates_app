@@ -147,6 +147,7 @@ const getCountryHoliday = async (searchInput, yearInput, monthInput, dayInput, c
 
 const getHolidayDate = async() => {
     errorMsgList[0].textContent = "Loading data...";
+    countriesList = await getCountries();
     let inputCheckedList = [true, true, true, true, true, true];
     inputBox.forEach((item, index) => {
         if (item.value.trim() === "") {
