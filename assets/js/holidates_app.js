@@ -171,11 +171,6 @@ const getHolidayDate = async() => {
     errorMsgList[0].textContent = "";
     ulElementsList[0].innerHTML = "";
     
-    if (inputBox[4].value !== "") {
-        countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
-        holidayCard.textContent = `Holidays of ${countryName["name"]}`;
-    }
-    
     holidaysList.forEach((item, index) => {
         let liElement = document.createElement("li");
         if ((index + 1)%2 !== 0) {
@@ -188,6 +183,13 @@ const getHolidayDate = async() => {
                     </div>`;
             }
             else {
+                if (inputBox[4].value !== "") {
+                    countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
+                    holidayCard.textContent = `Holidays of ${countryName["name"]}`;
+                }
+                else {
+                    holidayCard.textContent = "Holidays of VietNam";
+                }
                 liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
                     <div class="result-contain">
                         <div class="title">${item["name"]}</div>
@@ -207,6 +209,13 @@ const getHolidayDate = async() => {
                     </div>`;
             }
             else {
+                if (inputBox[4].value !== "") {
+                    countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
+                    holidayCard.textContent = `Holidays of ${countryName["name"]}`;
+                }
+                else {
+                    holidayCard.textContent = "Holidays of VietNam";
+                }
                 liElement.classList = "even";
                 liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
                     <div class="result-contain">
