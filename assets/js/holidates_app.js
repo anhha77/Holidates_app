@@ -178,6 +178,7 @@ const getHolidayDate = async() => {
         let liElement = document.createElement("li");
         if ((index + 1)%2 !== 0) {
             if (inputCheckedList[0]) {
+                holidayCard.textContent = `${inputBox[0].value}`;
                 liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
                     <div class="result-contain">
                         <div class="title">${countriesList.find((element) => element["code"] === item["country"])["name"]}</div>
@@ -195,6 +196,7 @@ const getHolidayDate = async() => {
         }
         else {
             if (inputCheckedList[0]) {
+                holidayCard.textContent = `${inputBox[0].value}`;
                 liElement.classList = "even";
                 liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
                     <div class="result-contain">
