@@ -168,7 +168,7 @@ const getHolidayDate = async() => {
     }
     errorMsgList[0].textContent = "";
     ulElementsList[0].innerHTML = "";
-    // console.log(countriesList[0]["code"]);
+    
     if (inputBox[4].value !== "") {
         countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
         holidayCard.textContent = `Holidays of ${countryName["name"]}`;
@@ -177,19 +177,40 @@ const getHolidayDate = async() => {
     holidaysList.forEach((item, index) => {
         let liElement = document.createElement("li");
         if ((index + 1)%2 !== 0) {
-            liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
-            <div class="result-contain">
-                <div class="title">${item["name"]}</div>
-                <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
-            </div>`;
+            if (inputCheckedList[0]) {
+                liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
+                    <div class="result-contain">
+                        <div class="title">${countriesList.find((element) => element["code"] === item["country"])["name"]}</div>
+                        <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
+                    </div>`;
+            }
+            else {
+                liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
+                    <div class="result-contain">
+                        <div class="title">${item["name"]}</div>
+                        <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
+                    </div>`;
+            }
+            
         }
         else {
-            liElement.classList = "even";
-            liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
-            <div class="result-contain">
-                <div class="title">${item["name"]}</div>
-                <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
-            </div>`;
+            if (inputCheckedList[0]) {
+                liElement.classList = "even";
+                liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
+                    <div class="result-contain">
+                        <div class="title">${countriesList.find((element) => element["code"] === item["country"])["name"]}</div>
+                        <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
+                    </div>`;
+            }
+            else {
+                liElement.classList = "even";
+                liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
+                    <div class="result-contain">
+                        <div class="title">${item["name"]}</div>
+                        <div class="result">${item["weekday"]["date"]["name"]} - ${item["date"]}</div>
+                    </div>`;
+            }
+            
         }
         ulElementsList[0].appendChild(liElement)
     });
