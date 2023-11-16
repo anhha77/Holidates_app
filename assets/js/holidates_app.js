@@ -130,7 +130,7 @@ const getVietNamasDefault = async () => {
 const getCountryHoliday = async (searchInput, yearInput, monthInput, dayInput, countrycodeInput, languageInput) => {
     let response;
     try {
-        if (searchInput) response = await fetch(`${BASE_URL}holiddays?pretty&key=${API_KEY}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}&search=${inputBox[0].value}`);
+        if (searchInput) response = await fetch(`${BASE_URL}holidays?pretty&key=${API_KEY}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}&search=${inputBox[0].value}`);
         else response = await fetch(`${BASE_URL}holidays?pretty&key=${API_KEY}&${countrycodeInput ? `&country=${inputBox[4].value}` : "country=VN"}&${yearInput ? `&year=${inputBox[1].value}` : "year=2022"}${monthInput ? `&month=${inputBox[2].value}` : ""}${dayInput ? `&day=${inputBox[3].value}` : ""}${languageInput ? `&language=${inputBox[5].value}` : ""}`);
         
         if (response.ok) {
@@ -147,9 +147,11 @@ const getCountryHoliday = async (searchInput, yearInput, monthInput, dayInput, c
 
 const getHolidayDate = async() => {
     errorMsgList[0].textContent = "Loading data...";
+    countriesList = await getCountries();
+    languagesList = await getLanguageCode();
     let inputCheckedList = [true, true, true, true, true, true];
     inputBox.forEach((item, index) => {
-        if (item.value.trim() === "") {
+        if (!item.value.trim()) {
             inputCheckedList[index] = false;
         }
     });
@@ -169,15 +171,11 @@ const getHolidayDate = async() => {
     errorMsgList[0].textContent = "";
     ulElementsList[0].innerHTML = "";
     
-    if (inputBox[4].value !== "") {
-        countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
-        holidayCard.textContent = `Holidays of ${countryName["name"]}`;
-    }
-    
     holidaysList.forEach((item, index) => {
         let liElement = document.createElement("li");
         if ((index + 1)%2 !== 0) {
             if (inputCheckedList[0]) {
+                holidayCard.textContent = `${inputBox[0].value}`;
                 liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
                     <div class="result-contain">
                         <div class="title">${countriesList.find((element) => element["code"] === item["country"])["name"]}</div>
@@ -185,6 +183,13 @@ const getHolidayDate = async() => {
                     </div>`;
             }
             else {
+                if (inputBox[4].value !== "") {
+                    countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
+                    holidayCard.textContent = `Holidays of ${countryName["name"]}`;
+                }
+                else {
+                    holidayCard.textContent = "Holidays of VietNam";
+                }
                 liElement.innerHTML = `<div class="number odd-number">${index + 1}</div>
                     <div class="result-contain">
                         <div class="title">${item["name"]}</div>
@@ -195,6 +200,7 @@ const getHolidayDate = async() => {
         }
         else {
             if (inputCheckedList[0]) {
+                holidayCard.textContent = `${inputBox[0].value}`;
                 liElement.classList = "even";
                 liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
                     <div class="result-contain">
@@ -203,6 +209,13 @@ const getHolidayDate = async() => {
                     </div>`;
             }
             else {
+                if (inputBox[4].value !== "") {
+                    countryName = countriesList.find((item) => item["code"] === inputBox[4].value.toUpperCase());
+                    holidayCard.textContent = `Holidays of ${countryName["name"]}`;
+                }
+                else {
+                    holidayCard.textContent = "Holidays of VietNam";
+                }
                 liElement.classList = "even";
                 liElement.innerHTML = `<div class="number even-number">${index + 1}</div>
                     <div class="result-contain">
